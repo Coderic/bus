@@ -1,6 +1,6 @@
 # 🚌 Bus Express - React + Pasarela Gateway
 
-Sistema de reserva de autobuses en tiempo real construido con **React** y [Pasarela Gateway](https://github.com/NeftaliYagua/Pasarela).
+Sistema de reserva de autobuses en tiempo real construido con **React** y [Pasarela Gateway](https://github.com/Coderic/Pasarela).
 
 ![React](https://img.shields.io/badge/React-18-61DAFB?logo=react)
 ![Vite](https://img.shields.io/badge/Vite-5-646CFF?logo=vite)
@@ -84,8 +84,8 @@ src/
 
 ## 🔗 Enlaces
 
-- [Pasarela Gateway](https://github.com/NeftaliYagua/Pasarela)
-- [Documentación](https://neftaliyagua.github.io/Pasarela/)
+- [Pasarela Gateway](https://github.com/Coderic/Pasarela)
+- [Documentación](https://coderic.github.io/Pasarela/)
 - [Otros ejemplos](https://github.com/Coderic?q=pasarela-ejemplo)
 
 ## 📄 Licencia
