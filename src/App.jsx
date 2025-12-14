@@ -1,5 +1,5 @@
 import { useState, useEffect, useMemo } from 'react';
-import { useRelay } from './hooks/usePasarela';
+import { useRelay } from './hooks/useRelay';
 import './App.css';
 
 const SESSION_ID = localStorage.getItem('busSession') || (() => {
