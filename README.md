@@ -1,19 +1,19 @@
-# 🚌 Bus Express - React + Pasarela Gateway
+# 🚌 Bus Express - React + Relay Gateway
 
-Sistema de reserva de autobuses en tiempo real construido con **React** y [Pasarela Gateway](https://github.com/Coderic/Pasarela).
+Sistema de reserva de autobuses en tiempo real construido con **React** y [Relay Gateway](https://github.com/Coderic/Relay).
 
 ![React](https://img.shields.io/badge/React-18-61DAFB?logo=react)
 ![Vite](https://img.shields.io/badge/Vite-5-646CFF?logo=vite)
-![Pasarela](https://img.shields.io/badge/Pasarela-Gateway-blueviolet)
+![Relay](https://img.shields.io/badge/Relay-Gateway-blueviolet)
 
 ## 🚀 Inicio Rápido
 
 ### Prerrequisitos
 
-Pasarela Gateway ejecutándose en `http://localhost:5000`:
+Relay Gateway ejecutándose en `http://localhost:5000`:
 
 ```bash
-npx pasarela-gateway
+npx relay-gateway
 # o con Docker
 docker compose up -d
 ```
@@ -21,27 +21,27 @@ docker compose up -d
 ### Instalación
 
 ```bash
-git clone https://github.com/Coderic/pasarela-ejemplo-bus.git
-cd pasarela-ejemplo-bus
+git clone https://github.com/Coderic/relay-ejemplo-bus.git
+cd relay-ejemplo-bus
 npm install
 npm run dev
 ```
 
 Abre http://localhost:5173
 
-## 📖 Hook `usePasarela`
+## 📖 Hook `useRelay`
 
 Este ejemplo incluye un hook React reutilizable:
 
 ```jsx
-import { usePasarela } from './hooks/usePasarela';
+import { useRelay } from './hooks/useRelay';
 
 function MiComponente() {
   const { 
     connected, 
     enviarATodos, 
     onMensaje 
-  } = usePasarela('mi-usuario-id');
+  } = useRelay('mi-usuario-id');
 
   useEffect(() => {
     const unsubscribe = onMensaje((data) => {
@@ -68,7 +68,7 @@ function MiComponente() {
 Crea un archivo `.env`:
 
 ```env
-VITE_PASARELA_URL=http://localhost:5000
+VITE_RELAY_URL=http://localhost:5000
 ```
 
 ## 📁 Estructura
@@ -76,7 +76,7 @@ VITE_PASARELA_URL=http://localhost:5000
 ```
 src/
 ├── hooks/
-│   └── usePasarela.js    # Hook React para Pasarela
+│   └── useRelay.js    # Hook React para Relay
 ├── App.jsx               # Componente principal
 ├── App.css               # Estilos
 └── main.jsx              # Entry point
@@ -84,9 +84,9 @@ src/
 
 ## 🔗 Enlaces
 
-- [Pasarela Gateway](https://github.com/Coderic/Pasarela)
-- [Documentación](https://coderic.github.io/Pasarela/)
-- [Otros ejemplos](https://github.com/Coderic?q=pasarela-ejemplo)
+- [Relay Gateway](https://github.com/Coderic/Relay)
+- [Documentación](https://coderic.github.io/Relay/)
+- [Otros ejemplos](https://github.com/Coderic?q=relay-ejemplo)
 
 ## 📄 Licencia
 

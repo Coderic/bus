@@ -1,5 +1,5 @@
 import { useState, useEffect, useMemo } from 'react';
-import { usePasarela } from './hooks/usePasarela';
+import { useRelay } from './hooks/useRelay';
 import './App.css';
 
 const SESSION_ID = localStorage.getItem('busSession') || (() => {
@@ -16,7 +16,7 @@ const RUTAS = [
 ];
 
 function App() {
-  const { connected, enviarATodos, onMensaje } = usePasarela(SESSION_ID);
+  const { connected, enviarATodos, onMensaje } = useRelay(SESSION_ID);
   
   const [rutaSeleccionada, setRutaSeleccionada] = useState(null);
   const [asientos, setAsientos] = useState({});
@@ -82,7 +82,7 @@ function App() {
   useEffect(() => {
     if (connected) {
       enviarATodos({ tipo: 'sync_request', sessionId: SESSION_ID });
-      addLog('🟢 Conectado a Pasarela');
+      addLog('🟢 Conectado a Relay');
     }
   }, [connected, enviarATodos]);
 
