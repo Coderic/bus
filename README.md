@@ -1,93 +1,101 @@
-# 🚌 Bus Express - React + Relay Gateway
+# 🚌 Bus Express - Reserva de Autobuses en Tiempo Real
 
-Sistema de reserva de autobuses en tiempo real construido con **React** y [Relay Gateway](https://github.com/Coderic/Relay).
+Sistema de reserva de autobuses con disponibilidad en tiempo real construido con **React** y **[Relay Gateway](https://github.com/Coderic/Relay)**.
 
 ![React](https://img.shields.io/badge/React-18-61DAFB?logo=react)
 ![Vite](https://img.shields.io/badge/Vite-5-646CFF?logo=vite)
 ![Relay](https://img.shields.io/badge/Relay-Gateway-blueviolet)
 
+## 📖 Sobre este Ejemplo
+
+**Bus Express** es un ejemplo funcional que demuestra cómo construir un sistema de reserva de autobuses con actualización de disponibilidad en tiempo real. Este ejemplo muestra:
+
+- 🚌 **Selección de rutas** - Búsqueda de viajes por origen y destino
+- 🎫 **Reserva de asientos** - Visualización y selección de asientos disponibles
+- ⚡ **Actualización en tiempo real** - Los asientos se bloquean automáticamente cuando otros usuarios los seleccionan
+- ⚠️ **Prevención de overbooking** - Múltiples usuarios no pueden reservar el mismo asiento
+- 📊 **Gestión de reservas** - Vista de todas las reservas activas en tiempo real
+
+Este ejemplo pertenece a la colección de ejemplos de **[Relay Gateway](https://github.com/Coderic/Relay)**, un gateway de comunicación en tiempo real diseñado para ser inmutable y agnóstico.
+
 ## 🚀 Inicio Rápido
 
 ### Prerrequisitos
 
-Relay Gateway ejecutándose en `http://localhost:5000`:
-
-```bash
-npx relay-gateway
-# o con Docker
-docker compose up -d
-```
+- Node.js 18+ o Docker
+- Relay Gateway ejecutándose (ver [documentación de Relay](https://relay.coderic.net))
 
 ### Instalación
 
 ```bash
-git clone https://github.com/Coderic/relay-ejemplo-bus.git
-cd relay-ejemplo-bus
+# Clonar el repositorio
+git clone https://github.com/Coderic/bus.git
+cd bus
+
+# Instalar dependencias
 npm install
+```
+
+### Configuración
+
+Asegúrate de tener Relay Gateway ejecutándose. Puedes usar el endpoint público para pruebas:
+
+```javascript
+// En tu código, el conector se conecta a:
+const relay = new RelayConector('http://demo.relay.coderic.net');
+```
+
+O ejecuta Relay localmente:
+
+```bash
+# Opción 1: Con npx (recomendado para pruebas)
+npx @coderic/relay
+
+# Opción 2: Con Docker Compose
+docker compose up -d
+```
+
+### Desarrollo
+
+```bash
+# Iniciar servidor de desarrollo
 npm run dev
 ```
 
-Abre http://localhost:5173
+Abre tu navegador en `http://localhost:5173` (o el puerto que Vite asigne).
 
-## 📖 Hook `useRelay`
+### Producción
 
-Este ejemplo incluye un hook React reutilizable:
+```bash
+# Construir para producción
+npm run build
 
-```jsx
-import { useRelay } from './hooks/useRelay';
-
-function MiComponente() {
-  const { 
-    connected, 
-    enviarATodos, 
-    onMensaje 
-  } = useRelay('mi-usuario-id');
-
-  useEffect(() => {
-    const unsubscribe = onMensaje((data) => {
-      console.log('Mensaje recibido:', data);
-    });
-    return unsubscribe;
-  }, [onMensaje]);
-
-  const enviar = () => {
-    enviarATodos({ tipo: 'saludo', texto: 'Hola!' });
-  };
-
-  return (
-    <div>
-      Estado: {connected ? '🟢' : '🔴'}
-      <button onClick={enviar}>Enviar</button>
-    </div>
-  );
-}
+# Los archivos estarán en la carpeta dist/
 ```
 
-## 🔧 Configuración
+## 🎯 Uso
 
-Crea un archivo `.env`:
-
-```env
-VITE_RELAY_URL=http://localhost:5000
-```
-
-## 📁 Estructura
-
-```
-src/
-├── hooks/
-│   └── useRelay.js    # Hook React para Relay
-├── App.jsx               # Componente principal
-├── App.css               # Estilos
-└── main.jsx              # Entry point
-```
+1. **Abrir múltiples pestañas** para simular diferentes usuarios
+2. **Seleccionar una ruta** de origen y destino
+3. **Elegir asientos** - Observa cómo los asientos se bloquean en tiempo real cuando otros usuarios los seleccionan
+4. **Realizar reservas** - Los asientos se reservan automáticamente
+5. **Ver el dashboard** - Monitorea todas las reservas en tiempo real
 
 ## 🔗 Enlaces
 
-- [Relay Gateway](https://github.com/Coderic/Relay)
-- [Documentación](https://coderic.github.io/Relay/)
-- [Otros ejemplos](https://github.com/Coderic?q=relay-ejemplo)
+- 📦 [Repositorio](https://github.com/Coderic/bus)
+- 🐛 [Issues](https://github.com/Coderic/bus/issues)
+- 🌐 [Demo en línea](https://coderic.org/bus/)
+- 📚 [Documentación de Relay](https://relay.coderic.net)
+- ⚡ [Relay Gateway](https://github.com/Coderic/Relay)
 
-## 📄 Licencia
+## 🛠️ Tecnologías
 
-MIT © [Coderic](https://github.com/Coderic)
+- **React** - Biblioteca JavaScript para construir interfaces de usuario
+- **Vite** - Build tool y dev server
+- **Relay Gateway** - Gateway de comunicación en tiempo real
+- **Socket.io** - Comunicación WebSocket
+
+## 📝 Licencia
+
+MIT
